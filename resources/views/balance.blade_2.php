@@ -66,12 +66,13 @@ $saldo_arr=0;
           private $descripcion;
           private $fecha;
           private $saldo;
+          private static $mi_saldo_inicial = 0;
 
-            public function __construct($monto,$descripcion,$fecha,$saldo) {
+            public function __construct($monto,$descripcion,$fecha) {
               $this->monto = $monto;
               $this->descripcion = $descripcion;
               $this->fecha = $fecha;
-              $this->saldo = $saldo;
+              $this->saldo = $this->calcularSaldo($monto);
             }
             public function getValor(){
               return $this->monto;
@@ -83,12 +84,17 @@ $saldo_arr=0;
               
             }
 
+            public function calcularSaldo($sal) {
+              self::$mi_saldo_inicial = self::$mi_saldo_inicial + self::$sal;
+              return self::$mi_saldo_inicial;
+            }
+
             public function ArmarTransaccion(){
               echo "<tr>";
               echo "<th scope='row'>".$this->fecha. "</th>";
               echo "<td>".$this->descripcion . "</td>";
               echo "<td>".$this->monto . "</td>";
-              echo "<td>".$this->getSaldo() . "</td>";
+              echo "<td>".$this->$mi_saldo_inicial . "</td>";
               echo "</tr>";
                     }
             
@@ -113,11 +119,9 @@ $saldo_arr=0;
     $saldo = 0;
     $importes =0;
         //Instanciando las transacciones.
-     $transaccion = new Transaccion(5000,'Transaccion Entrante',"11/11/2019",$saldo);
-     $saldo = $saldo + $transaccion->getValor();
-     $transaccion_2 = new Transaccion(-400,'Transaccion Saliente',"8/09/2019", $saldo );
-     $saldo = $saldo + $transaccion_2->getValor();
-     $transaccion_3 = new Transaccion(3000,'Salario',"2/10/2019", $saldo );
+     $transaccion = new Transaccion(5000,'Transaccion Entrante',"11/11/2019");
+     $transaccion_2 = new Transaccion(-400,'Transaccion Saliente',"8/09/2019");
+     $transaccion_3 = new Transaccion(3000,'Salario',"2/10/2019");
 
         //Imprimiendo las transacciones
         $transaccion->ArmarTransaccion();

@@ -11,8 +11,8 @@
     crossorigin="anonymous"></script>
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" type="text/css" href="../public/resources/css/bootstrap.css">
-    <script type="text/javascript" src="../public/resources/js/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="resources/css/bootstrap.css">
+    <script type="text/javascript" src="resources/js/bootstrap.js"></script>
     <title>Homebanking</title>
   </head>
   <body>

@@ -31,3 +31,20 @@ Route::get('pago-servicio', function () {
 Route::get('servicio-pago', function () {
     return view('pago_servicio');
 });
+
+
+
+Route::get('/servicios', function () {
+    return response()->json(array(
+        'Agua' => 'Pagado',
+        'Luz' => 'Pagado',
+        'Cable' => 'Pagado'
+    ));
+});
+
+Route::post('/servicios', function () {
+    return "Servicio Creado";
+});
+Route::delete('/servicios', function () {
+    return "Servicio Eliminado";
+});

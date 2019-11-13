@@ -11,8 +11,8 @@
     crossorigin="anonymous"></script>
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" type="text/css" href="resources/css/bootstrap.css">
-    <script type="text/javascript" src="resources/js/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="../public/resources/css/bootstrap.css">
+    <script type="text/javascript" src="../public/resources/js/bootstrap.js"></script>
     <title>Homebanking</title>
   </head>
   <body>
@@ -54,47 +54,35 @@
 <br>
 
 <?php
+$transacciones = [
+  0 => [ "fecha" => "1/02/2019",
+  "valor" => "500", "descripcion" => "Salario"],
+  1 => [ "fecha" => "15/03/2019",
+  "valor" => "2000", "descripcion" => "Salario"],
+  2 => [ "fecha" => "1/04/2019",
+  "valor" => "-1412", "descripcion" => "Transferencia Saliente"],
+  3 => [ "fecha" => "24/05/2019",
+  "valor" => "1231", "descripcion" => "Transferencia Entrante"],
+  4 => [ "fecha" => "31/05/2019",
+  "valor" => "1513", "descripcion" => "Salario"],
+  5 => [ "fecha" => "12/06/2019",
+  "valor" => "15123", "descripcion" => "Transferencia Entrante"],
+  6 => [ "fecha" => "7/07/2019",
+  "valor" => "233", "descripcion" => "Salario"],
+  7 => [ "fecha" => "9/10/2019",
+  "valor" => "200", "descripcion" => "Transferencia Entrante"],
+  8 => [ "fecha" => "12/11/2019",
+  "valor" => "500", "descripcion" => "Salario"],
+  9 => [ "fecha" => "13/15/2019",
+  "valor" => "589", "descripcion" => "Transferencia Entrante"],
+  10 => [ "fecha" => "14/16/2019",
+  "valor" => "900", "descripcion" => "Salario"]];
 
 
-
-
-$saldo_arr=0;
-
-
-        class Transaccion {
-          private $monto;
-          private $descripcion;
-          private $fecha;
-          private $saldo;
-
-            public function __construct($monto,$descripcion,$fecha,$saldo) {
-              $this->monto = $monto;
-              $this->descripcion = $descripcion;
-              $this->fecha = $fecha;
-              $this->saldo = $saldo;
-            }
-            public function getValor(){
-              return $this->monto;
-            }
-
-            public function getSaldo() {
-              
-              return $this->saldo+$this->monto;
-              
-            }
-
-            public function ArmarTransaccion(){
-              echo "<tr>";
-              echo "<th scope='row'>".$this->fecha. "</th>";
-              echo "<td>".$this->descripcion . "</td>";
-              echo "<td>".$this->monto . "</td>";
-              echo "<td>".$this->getSaldo() . "</td>";
-              echo "</tr>";
-                    }
-            
-
-        }
 ?>
+
+
+
 
 <div class="container table-responsive-md">
 <table class="table">
@@ -109,30 +97,24 @@ $saldo_arr=0;
   <tbody>
    
     
-    <?php
-    $saldo = 0;
-    $importes =0;
-        //Instanciando las transacciones.
-     $transaccion = new Transaccion(5000,'Transaccion Entrante',"11/11/2019",$saldo);
-     $saldo = $saldo + $transaccion->getValor();
-     $transaccion_2 = new Transaccion(-400,'Transaccion Saliente',"8/09/2019", $saldo );
-     $saldo = $saldo + $transaccion_2->getValor();
-     $transaccion_3 = new Transaccion(3000,'Salario',"2/10/2019", $saldo );
+    <?php 
+            $saldo = 0;
+    foreach($transacciones as $indice => $array_fecha_valor) {
+        echo "<tr>";
 
-        //Imprimiendo las transacciones
-        $transaccion->ArmarTransaccion();
-        $transaccion_2->ArmarTransaccion();
-        $transaccion_3->ArmarTransaccion();
+    if($indice != 0 && $indice!= 10){
+      $saldo = $saldo+$array_fecha_valor["valor"];
+      echo "<th scope='row'>".$array_fecha_valor["fecha"]. "</th>";
+      echo "<td>". $array_fecha_valor["descripcion"]. "</td>";
+      echo "<td>". $array_fecha_valor["valor"]. "</td>";
+      echo "<td>". $saldo. "</td>";
+      }
+  
 
-
+     }
      echo "</tr>";
      ?>
  
-
-     
-
-
-
 
   </tbody>
 </table>

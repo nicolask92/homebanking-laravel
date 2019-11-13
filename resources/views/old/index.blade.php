@@ -11,8 +11,8 @@
     crossorigin="anonymous"></script>
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" type="text/css" href="resources/css/bootstrap.css">
-    <script type="text/javascript" src="resources/js/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="../public/resources/css/bootstrap.css">
+    <script type="text/javascript" src="../public/resources/js/bootstrap.js"></script>
     <title>Homebanking</title>
 
   </head>
@@ -29,7 +29,7 @@
 				        <a class="nav-link" href="index.html">Inicio</a>
 				      	</li>
 				      <li class="nav-item">
-				        <a class="nav-link" href="balance.html">Balance</a>
+				        <a class="nav-link" href="mi-balance">Balance</a>
 				      </li>
 				      <li class="nav-item">
 				        <a class="nav-link" href="pago_servicios.html">Pago de Servicios</a>
@@ -59,7 +59,7 @@
                   <div class="card mb-4 text-center">
                     <br>
                         <div class="col-sm text-center">
-                            <img src="imagenes/balance.ico" class="img-fluid w-75" alt="...">
+                            <img src="../public/imagenes/balance.ico" class="img-fluid w-75" alt="...">
                         </div>
                         <div class="card-body">
                           <h5 class="card-title">Balance</h5>
@@ -71,7 +71,7 @@
                   <div class="card mb-4 text-center">
                     <br>
                           <div class="col-sm text-center">
-                            <img src="imagenes/servicios.png" class="img-fluid w-75" alt="...">
+                            <img src="../public/imagenes/servicios.png" class="img-fluid w-75" alt="...">
                           </div>
                       <div class="card-body">
                       <h5 class="card-title">Pago de Servicios</h5>
@@ -83,7 +83,7 @@
                   <div class="card mb-4 text-center">
                     <br>
                             <div class="col-sm text-center">
-                              <img src="imagenes/inversiones.jpg" class="img-fluid w-75" alt="...">
+                              <img src="../public/imagenes/inversiones.jpg" class="img-fluid w-75" alt="...">
                             </div>
                       <div class="card-body">
                       <h5 class="card-title">Inversiones</h5>

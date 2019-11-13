@@ -11,11 +11,26 @@
     crossorigin="anonymous"></script>
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" type="text/css" href="resources/css/bootstrap.css">
-    <script type="text/javascript" src="resources/js/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="../public/resources/css/bootstrap.css">
+    <script type="text/javascript" src="../public/resources/js/bootstrap.js"></script>
     <title>Homebanking</title>
   </head>
   <body>
+      <?php
+        $servicio = $_POST["servicio"];
+        $id_referencia = $_POST['id_referencia'];
+        $importe = $_POST["importe"];
+
+
+        if(empty($servicio)||empty($id_referencia)||empty($importe)){
+            $msj = "Debe completar todos los datos necesarios";
+        } else {
+            $msj = "Gracias por realizar su pago a travez de CODERBANK";
+            $msj2 ="El Pago de Servicio de $servicio es de $$importe y se pago correctamente. Su id de referencia es $id_referencia";
+        }
+
+      ?>
+
   				<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 				  <a class="navbar-brand" href="#">CODERBANK</a>
 				  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,7 +61,7 @@
   <h1 class="text-left"> Pago de Servicios</h1>
   
 
-  <p class="text-left">Paga todo lo que necesites desde la comodidad de tu casa</p>
+  <p class="text-left"></p>
   <br>
 </div>
 </div>
@@ -59,45 +74,39 @@
     <div class="col">
       
     </div>
+
+
     <div class="col-6">
-      <form action="pago_servicio.php" method="POST">
-          <label for="formGroupExampleInput"  >Nombre del Servicio</label>
-          <div class="form-group">
-              <div class="input-group mb-3">
-                  <div class="input-group-prepend" >
-                    <label class="input-group-text" for="inputGroupSelect01">Elegir Servicio a Pagar</label>
-                  </div>
-                  <select class="custom-select" name="servicio" id="inputGroupSelect01">
-                    <option selected>Seleccion</option>
-                    <option value="Luz">Luz</option>
-                    <option value="Agua">Agua</option>
-                    <option value="Gas">Gas</option>
-                    <option value="Telefono, Internet, TV">Telefono, Internet, TV</option>
-                    <option value="Tarjeta de Credito">Tarjeta de Credito</option>
-                    <option value="Otro">Otro</option>
-                  </select>
+            <div class="card">
+                <div class="card-header">
+                    Pago de Servicio
                 </div>
-
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">Numero de Referencia</label>
-            <input type="text" class="form-control" id="formGroupExampleInput" aria-describedby="emailHelp" name="id_referencia" placeholder="" required>
-          </div>
-          <div class="form-group">
-                <label class="form-check-label" for="exampleCheck1">Importe</label>
-            <input type="text" class="form-control" id="formGroupExampleInput" aria-describedby="emailHelp" name="importe" placeholder="" required>
-
-          </div>
-          <button type="submit" class="btn btn-primary mb-2 float-right">Pagar Servicio</button>
-</form>
+                <div class="card-body">
+                    <?php if(empty($msj2)){
+                                            echo "<h5 class='card-title'> $msj </h5>";
+                    }
+                    else {
+                    echo "<h5 class='card-title'> $msj </h5>";
+                    echo "<p class='card-text'> $msj2 </p>";
+}
+                    ?>
+                    
+                    <a href="pago_servicios.html" class="btn btn-primary">Seguir con Otros Pagos</a>
+                </div>
+        </div>
     </div>
+
+
     <div class="col">
     
     </div>
   </div>
 </div>
+<?php
 
 
 
-  </body>
+?>
+
+</body>
 </html>
