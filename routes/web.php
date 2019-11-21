@@ -11,40 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'ControladorPrincipal@inicio')->name('inicio');
 
-Route::get('mi-balance', function () {
-    return view('balance');
-});
-Route::get('home', function () {
-    return view('index');
-});
+Route::get('balance/{datos?}', 'ControladorPrincipal@balance')->name('balance');
 
-Route::get('inversiones', function () {
-    return view('inversiones');
-});
-Route::get('pago-servicio', function () {
-    return view('pago_servicios');
-});
-Route::get('servicio-pago', function () {
-    return view('pago_servicio');
-});
+Route::get('inversiones', 'ControladorPrincipal@inversiones')->name('inversiones');
 
+Route::get('pago_servicios', 'ControladorPrincipal@servicios_a_pagar')->name('servicios');
 
-
-Route::get('/servicios', function () {
-    return response()->json(array(
-        'Agua' => 'Pagado',
-        'Luz' => 'Pagado',
-        'Cable' => 'Pagado'
-    ));
-});
-
-Route::post('/servicios', function () {
-    return "Servicio Creado";
-});
-Route::delete('/servicios', function () {
-    return "Servicio Eliminado";
-});
+Route::get('pago_servicio','ControladorPrincipal@servicios_pago')->name('servicios_pago');
