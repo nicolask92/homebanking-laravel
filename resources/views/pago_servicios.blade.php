@@ -20,15 +20,15 @@
     <div class="col">
       
     </div>
-    <div class="col-6">
-      <form action="pago_servicio.php" method="POST">
+    <div class="col-6" id="formulario">
+      <form method="POST" action="#">
           <label for="formGroupExampleInput"  >Nombre del Servicio</label>
           <div class="form-group">
               <div class="input-group mb-3">
                   <div class="input-group-prepend" >
                     <label class="input-group-text" for="inputGroupSelect01">Elegir Servicio a Pagar</label>
                   </div>
-                  <select class="custom-select" name="servicio" id="inputGroupSelect01">
+                  <select class="custom-select" name="servicio" id="nameService">
                     <option selected>Seleccion</option>
                     <option value="Luz">Luz</option>
                     <option value="Agua">Agua</option>
@@ -42,14 +42,14 @@
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Numero de Referencia</label>
-            <input type="text" class="form-control" id="formGroupExampleInput" aria-describedby="emailHelp" name="id_referencia" placeholder="" required>
+            <input type="text" class="form-control" id="referencia" aria-describedby="emailHelp" name="id_referencia" placeholder="" required>
           </div>
           <div class="form-group">
                 <label class="form-check-label" for="exampleCheck1">Importe</label>
-            <input type="text" class="form-control" id="formGroupExampleInput" aria-describedby="emailHelp" name="importe" placeholder="" required>
+            <input type="text" class="form-control" id="moneyService" aria-describedby="emailHelp" name="importe" placeholder="" required>
 
           </div>
-          <button type="submit" class="btn btn-primary mb-2 float-right">Pagar Servicio</button>
+          <button type="button" id="payService" class="btn btn-primary mb-2 float-right">Pagar Servicio</button>
 </form>
     </div>
     <div class="col">
@@ -57,4 +57,29 @@
     </div>
   </div>
 </div>
+@endsection
+
+@section('script')
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.slim.js"
+  integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI="
+  crossorigin="anonymous"></script>
+
+<script>
+
+    $(document).ready(function(){
+        $("#payService").click( function(){
+            var data = {
+                money: $("#moneyService").val(),
+                service: $("#nameService").val(),
+                referencia: $('#referencia').val()
+            }
+          $.post('servicios/pay', data, function(response){
+              $("#formulario").html(response.view);
+                });
+            });
+        }); 
+</script>
+
 @endsection
