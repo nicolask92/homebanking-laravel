@@ -77,7 +77,36 @@
 
 				   
 				  </div>
-				</nav>
+        </nav>
+        @isset($titulo)
+        @isset($descripcion)
+        @if(Route::is('inicio'))
+            
+            <div class="container-fluid bg-light ">
+                <div class="container">
+                <br>  <br>
+                <h1 class="text-center">{{$titulo}}</h1>
+              <br>
+              
+                <p class="text-center">{{$descripcion}}</p>
+              <br>
+              </div>
+              </div>
+              @else
+          <div class="container-fluid bg-light ">
+            <div class="container">
+              <br>  <br>
+            <h1 class="text-left"> {{$titulo}}</h1>
+            
+          
+            <p class="text-left">{{$descripcion}}</p>
+            <br>
+          </div>
+          </div>
+        @endif
+        @endisset
+        @endisset
+
 
                 @yield('cuerpo')
 

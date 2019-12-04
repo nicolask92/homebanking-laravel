@@ -1,21 +1,10 @@
-@extends('plantilla')
+@extends('layouts.plantilla',['titulo'=>'Pago de Servicios','descripcion'=>'Paga todo lo que necesites desde la comodidad de tu casa'])
 
 @section('cuerpo')
-<div class="container-fluid bg-light ">
-  <div class="container">
-	  <br>  <br>
-  <h1 class="text-left"> Pago de Servicios</h1>
-  
 
-  <p class="text-left">Paga todo lo que necesites desde la comodidad de tu casa</p>
-  <br>
-</div>
-</div>
 
-<br>
-<br>
 
-<div class="container">
+<div class="container mt-3">
   <div class="row">
     <div class="col">
       

@@ -1,5 +1,0 @@
-Poner a Deck con Row y Col.
-
-En inversiones tendriamos que ver si tenemos la plata para comprar las acciones. y si vendemos que se acreedite la plata a la cuenta
-
-

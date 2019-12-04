@@ -1,20 +1,8 @@
-@extends('plantilla')
+@extends('layouts.plantilla',['titulo'=>'Inversiones','descripcion'=>'Duplica tus ahorros en el mercado financiero.'])
 
 @section('cuerpo')
-<div class="container-fluid bg-light ">
-  <div class="container">
-	  <br>  <br>
-  <h1 class="text-left"> Inversiones</h1>
-  
 
-  <p class="text-left">Duplica tus ahorros en el mercado financiero.</p>
-  <br>
-</div>
-</div>
-
-<br>
-<br>
-<div class="container table-responsive-lg">
+<div class="container table-responsive-lg mt-3">
 <table class="table">
   <thead>
     <tr>

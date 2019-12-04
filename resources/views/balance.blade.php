@@ -1,23 +1,9 @@
-@extends('plantilla')
+@extends('layouts.plantilla',['titulo'=>'Balance Financiero','descripcion'=>'Aca podes controlar los movimientos de tu cuenta'])
 
 @section('cuerpo')
   
 
-
-<div class="container-fluid bg-light ">
-  <div class="container">
-	  <br>  <br>
-  <h1 class="text-left"> Balance Financiero</h1>
-  
-
-  <p class="text-left">Aca podes controlar los movimientos de tu cuenta</p>
-  <br>
-</div>
-</div>
-
-<br>
-
-<div class="container table-responsive-md">
+<div class="container table-responsive-md mt-3">
 <table class="table">
   <thead>
     <tr>

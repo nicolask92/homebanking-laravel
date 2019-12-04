@@ -1,20 +1,10 @@
-@extends('plantilla')
+@extends('layouts.plantilla',['titulo'=>'Bienvenido a CODEBANK, Que queres hacer hoy?','descripcion'=>'En este sitio podes operar con tu cuenta mirando el balance, haciendo transferencia, pagando servicios y armando inversiones!'])
 
 @section('cuerpo')
-<div class="container-fluid bg-light ">
-  <div class="container">
-  <br>  <br>
-<h1 class="text-center"> Bienvenido a CODEBANK, Que queres hacer hoy?</h1>
-<br>
 
-<p class="text-center">En este sitio podes operar con tu cuenta mirando el balance, haciendo transferencia, pagando servicios y armando inversiones!</p>
-<br>
-</div>
-</div>
 
-<br>
-<br>
-    <div class="container">
+
+    <div class="container mt-3">
         <div class="card-deck text-center">
                 <div class="card mb-4 text-center">
                   <br>
