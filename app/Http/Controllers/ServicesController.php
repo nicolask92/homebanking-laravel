@@ -22,5 +22,14 @@ class ServicesController extends Controller
         return response()->json(array('success'=>true, 'view'=>$response));
     }
 
+    public function consulta(Request $request) {
+        $name = $request->get('Nombre');
+        $names = laravel::table('usuarios')->where("Nombre",$name)->get();
+
+        $response = view('consultado',compact('names'))->render();
+
+        return response()->json(array('success'=>true, 'view'=>$response));
+        
+    }
 
 }

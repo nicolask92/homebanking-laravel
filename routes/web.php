@@ -28,3 +28,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/servicios', 'ServicesController@index')->name('servicios');
 
 Route::post('servicios/pay', 'ServicesController@payService')->name('services.pay');
+
+Route::get('/consulta', 'ServicesController@consulta')->name('consulta');
