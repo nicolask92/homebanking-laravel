@@ -40,12 +40,39 @@
           </div>
           <button type="button" id="payService" class="btn btn-primary mb-2 float-right">Pagar Servicio</button>
 </form>
+
     </div>
     <div class="col">
     
     </div>
   </div>
 </div>
+
+<div class="container mt-5">
+  <h4 class="text-left mb-3"> Servicios Pagados</h4>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Tipo de Servicio</th>
+        <th scope="col">Numero de Ref</th>
+        <th scope="col">Importe</th>
+      </tr>
+    </thead>
+    <tbody>
+        @foreach ($servicios_pagos as $servicio)
+      <tr>
+        <th scope="row">{{$servicio->id}}</th>
+        <td>{{$servicio->servicio}}</td>
+        <td>{{$servicio->reference_number}}</td>
+        <td>{{$servicio->importe}}</td>
+      </tr>
+      @endforeach
+    </tbody>
+  </table>
+
+</div>
+
 @endsection
 
 @section('script')

@@ -3,11 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App;
 
 class ServicesController extends Controller
 {
     public function index() {
-        return view ('pago_servicios');
+
+
+        $servicios_pagos = App\Services::all();
+
+        return view ('pago_servicios',compact('servicios_pagos'));
+
     }
 
     public function payService(Request $request) {
@@ -19,17 +25,9 @@ class ServicesController extends Controller
         
         $response = view('pago_servicio',compact('service','money','referencia'))->render();
 
-        return response()->json(array('success'=>true, 'view'=>$response));
-    }
 
-    public function consulta(Request $request) {
-        $name = $request->get('Nombre');
-        $names = laravel::table('usuarios')->where("Nombre",$name)->get();
-
-        $response = view('consultado',compact('names'))->render();
 
         return response()->json(array('success'=>true, 'view'=>$response));
-        
     }
 
 }
