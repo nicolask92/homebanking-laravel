@@ -47,7 +47,6 @@
     </div>
   </div>
 </div>
-
 <div class="container mt-5">
   <h4 class="text-left mb-3"> Servicios Pagados</h4>
   <table class="table">
@@ -60,7 +59,7 @@
       </tr>
     </thead>
     <tbody>
-        @foreach ($servicios_pagos as $servicio)
+        @foreach ($servicios_pagos->sortByDesc('id') as $servicio)
       <tr>
         <th scope="row">{{$servicio->id}}</th>
         <td>{{$servicio->servicio}}</td>
@@ -68,10 +67,13 @@
         <td>{{$servicio->importe}}</td>
       </tr>
       @endforeach
+      {{$servicios_pagos->links()}}
     </tbody>
   </table>
 
 </div>
+
+
 
 @endsection
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App;
 
 class ControladorPrincipal extends Controller
 {
@@ -17,11 +18,8 @@ class ControladorPrincipal extends Controller
         return view('pago_servicios');
     }
 
-    public function inversiones() {
-        return view('inversiones');
-    }
-
     public function balance($datos = null) {
+        $saldo = App\Saldo::all();
 
         if(!$datos) {
             $monto = array('5000','-400','4000');
@@ -40,7 +38,7 @@ class ControladorPrincipal extends Controller
 
             //$saldos = [$monto[0],$monto[1]-$monto[0],$subsaldo];
 
-            return view('balance',compact('monto','descripcion','fecha','saldos'));
+            return view('balance',compact('monto','descripcion','fecha','saldos','saldo'));
         }
         else {
             return view('balance');

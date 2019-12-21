@@ -7,12 +7,12 @@
   
       <!-- CSRF Token -->
       <meta name="csrf-token" content="{{ csrf_token() }}">
-  
-      <title>Homebanking</title>
-  
+
+      <link rel="shortcut icon" type="image/svg+xml" href="{{asset('favicon.ico')}}" sizes="any">
+      
       <!-- Scripts -->
       <script src="{{ asset('js/app.js') }}" defer></script>
-  
+      <title> CODERBANK - Homebanking</title>
       <!-- Fonts -->
       <link rel="dns-prefetch" href="//fonts.gstatic.com">
       <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -92,15 +92,27 @@
               <br>
               </div>
               </div>
-              @else
-          <div class="container-fluid bg-light ">
+         @else
+
+          <div class="container-fluid bg-light mt-5">
             <div class="container">
-              <br>  <br>
-            <h1 class="text-left"> {{$titulo}}</h1>
+              <div class="row">
+                <div class="col-sm-10 ">
+                  <h1 class="text-left"> {{$titulo}}</h1>
             
           
-            <p class="text-left">{{$descripcion}}</p>
-            <br>
+                  <p class="text-left">{{$descripcion}}</p>
+                  <br>
+                </div>
+                <div class="col-sm-2">
+                  <div id="saldoo" class="alert alert-primary text-right" role="alert">
+                    @include('layouts.saldo')
+                    
+                  </div>
+                </div>
+              </div>
+           
+
           </div>
           </div>
         @endif

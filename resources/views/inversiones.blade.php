@@ -13,17 +13,32 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">Arcos Dorados</th>
-      <td>1000</td>
-      <td>100</td>
-      <td><button type="button" class="btn btn-primary">Comprar</button>
-      <button type="button" class="btn btn-success">Vender</button>
-      </td>
-    </tr>
+    @foreach ($inversiones as $in)
+  <tr>
+        <th scope="row">{{$in->empresa}}</th>
+        <td >{{$in->total_accion}}</td>
+  <td id="valor_{{$in->id}}">{{$in->val_accion}}</td>
+        <td>
+          <a class="btn btn-primary" href="{{route('inversiones.comprar', $in->id)}}">Comprar</a>
+          <a class="btn btn-success" href="{{route('inversiones.vender', $in->id)}}">Vender</a>
+        </td>
+      </tr>
+      @endforeach
+
 
   </tbody>
 </table>
 </div>
+  
+
+@endsection
+
+
+
+@section('script')
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.js"
+integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI="
+crossorigin="anonymous"></script>
 
 @endsection
