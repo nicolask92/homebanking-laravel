@@ -13,7 +13,7 @@
 
 Route::get('/', 'ControladorPrincipal@inicio')->name('inicio');
 
-Route::get('balance/{datos?}', 'ControladorPrincipal@balance')->name('balance');
+Route::get('balance', 'Balances@balance')->name('balance');
 
 Route::get('inversiones', 'Investment@inversiones')->name('inversiones');
 
@@ -31,4 +31,4 @@ Route::post('servicios/pay', 'ServicesController@payService')->name('services.pa
 
 Route::post('inversiones/comprar/comprado', 'Investment@comprado')->name('inversiones.comprado');
 
-Route::post('inversiones/comprar/vendido', 'Investment@vendido')->name('inversiones.vendido');
+Route::post('inversiones/vender/vendido', 'Investment@vendido')->name('inversiones.vendido');

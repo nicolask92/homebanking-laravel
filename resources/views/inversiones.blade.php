@@ -15,7 +15,7 @@
   <tbody>
     @foreach ($inversiones as $in)
   <tr>
-        <th scope="row">{{$in->empresa}}</th>
+        <td scope="row">{{$in->empresa}}</td>
         <td >{{$in->total_accion}}</td>
   <td id="valor_{{$in->id}}">{{$in->val_accion}}</td>
         <td>

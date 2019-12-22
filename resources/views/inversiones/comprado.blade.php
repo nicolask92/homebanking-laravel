@@ -14,10 +14,10 @@
     <div class="alert alert-success" role="alert">
         <h2 class="text-center">Acciones Compradas</h2>
             <strong>Empresa:</strong> {{$empresa}} <br>
-            <strong>Importe gastado:</strong> {{$acciones_a_comprar}}<br>
+            <strong>Importe gastado:</strong> {{number_format($acciones_a_comprar)}}<br>
             <strong>Acciones compradas:</strong>  {{$accion}}<br>
             <hr>
-            <p class="mb-0">El saldo Actual es de : <strong>${{ $saldo->last()->saldo  }}</strong></p>
+            <p class="mb-0">El saldo Actual es de : <strong>${{ number_format($saldo->last()->saldo)  }}</strong></p>
 
     </div>
 

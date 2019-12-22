@@ -41,6 +41,7 @@ class Investment extends Controller
                     $id_acciones_de_esta_empresa = $request->get('id');
                     $comprar_acciones = App\Investment::findOrFail($id_acciones_de_esta_empresa);
                     $valor_de_accion_a_comprar = $comprar_acciones->val_accion;
+                    $cantidad_de_acciones = $comprar_acciones->total_accion;
 
                     $saldo = App\Saldo::all();
                     $ult_saldo =  $saldo->last()->saldo;
@@ -56,9 +57,11 @@ class Investment extends Controller
                         $nuevo_saldo->saldo = $ult_saldo - $acciones_a_comprar;
                         $nuevo_saldo->save();
 
+                        $comprar_acciones->total_accion = $cantidad_de_acciones + $accion;
+                        $comprar_acciones->save();
 
                         $empresa = $comprar_acciones->empresa;
-                        
+                        $saldo = App\Saldo::all();
 
                         $response = view('inversiones/comprado',compact('empresa','acciones_a_comprar','accion','saldo'))->render();
                     
@@ -112,25 +115,32 @@ $validator = Validator::make($request->all(), [
             $comprar_acciones = App\Investment::findOrFail($id_acciones_de_esta_empresa);
             $valor_de_accion_a_vender = $comprar_acciones->val_accion;
 
+            $cantidad_de_acciones = $comprar_acciones->total_accion;
+
             $saldo = App\Saldo::all();
             $ult_saldo =  $saldo->last()->saldo;
 
                 // Defino las variables pasadas al controlador
             
             $accion = $request->get('acciones');
-            $acciones_a_vender = $accion*$valor_de_accion_a_vender;
+            
 
-            if($acciones_a_comprar<$ult_saldo) {
-                    //Se puede comprar ya que alcanza el saldo para la compra de acciones
+            if($accion<=$cantidad_de_acciones) {
+                    //Se puede vender ya que la cantidad de acciones es correcta
+
+                $acciones_a_vender = $accion*$valor_de_accion_a_vender;
+
                 $nuevo_saldo = new App\Saldo;
-                $nuevo_saldo->saldo = $ult_saldo - $acciones_a_comprar;
+                $nuevo_saldo->saldo = $ult_saldo + $acciones_a_vender;
+
+                $comprar_acciones->total_accion = $cantidad_de_acciones - $accion;
+                $comprar_acciones->save();
                 $nuevo_saldo->save();
-
-
+                $saldo = App\Saldo::all();
                 $empresa = $comprar_acciones->empresa;
                 
 
-                $response = view('inversiones/comprado',compact('empresa','acciones_a_comprar','accion','saldo'))->render();
+                $response = view('inversiones/vendido',compact('empresa','acciones_a_vender','accion','saldo'))->render();
             
                 
                 return response()->json(array('success'=>true, 'view'=>$response));
@@ -138,9 +148,9 @@ $validator = Validator::make($request->all(), [
 
             else {
 
-                $error = "Saldo Insuficiente";
+                $error = "Superaste las acciones que contas";
 
-                $response = view('inversiones/comprado',compact('error'))->render();
+                $response = view('inversiones/vendido',compact('error'))->render();
             
                 return response()->json(array('success'=>true, 'view'=>$response));
 
@@ -151,7 +161,7 @@ $validator = Validator::make($request->all(), [
 
         $error = "Ingrese los datos solicitados";
 
-        $response = view('inversiones/comprado',compact('error'))->render();
+        $response = view('inversiones/vendido',compact('error'))->render();
     
         return response()->json(array('success'=>true, 'view'=>$response));
     }

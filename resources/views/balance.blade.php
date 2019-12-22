@@ -15,17 +15,17 @@
   </thead>
   <tbody>
    
-    @for ($i = 0; $i < count($monto); $i++)
-
-    <tr>
-      <th scope='row'>{{$fecha[$i]}} </th>
-      <td>{{$descripcion[$i]}}</td>
-      <td>{{$monto[$i]}}</td>
-      <td>{{$saldos[$i]}}</td>
+    @foreach ($balance as $item)
+        
+       <tr>
+      <th scope='row'>{{$item->fecha}} </th>
+      <td>{{$item->desc}}</td>
+      <td>{{$item->importe}}</td>
+      <td>{{$item->saldos}}</td>
       </tr>
 
+      @endforeach
 
-    @endfor
     
   </tbody>
 </table>
