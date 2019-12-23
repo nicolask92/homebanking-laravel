@@ -16,7 +16,7 @@ class CreateBalancesTable extends Migration
         Schema::create('balances', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->date('fecha');
-            $table->string('descripcion');
+            $table->string('desc');
             $table->integer('importe');
             $table->timestamps();
         });
