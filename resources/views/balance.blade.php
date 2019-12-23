@@ -19,7 +19,7 @@
         
        <tr>
       <th scope='row'>{{$item->fecha}} </th>
-      <td>{{$item->desc}}</td>
+      <td>{{$item->descr}}</td>
       <td>{{$item->importe}}</td>
       <td>{{$item->saldos}}</td>
       </tr>
