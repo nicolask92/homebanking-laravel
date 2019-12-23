@@ -24,7 +24,7 @@ class ServicesController extends Controller
 
         $validator = Validator::make($request->all(), [
             'service' => 'required',
-            'money' => 'required',
+            'money' => 'required|integer|min:1',
             'referencia' => 'required'
         ]);
         if ($validator->passes()) {
